@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: admin
+      changes:
+        - insert:
+            tableName: task
+            columns:
+              - column:
+                  name: title
+                  value: "Спроектировать дизайн кухни"
+              - column:
+                  name: description
+                  value: ""
+              - column:
+                  name: status
+                  value: ""
+              - column:
+                  name: priority
+                  value: ""
+              - column:
+                  name: author_id
+                  value:
+              - column:
+                  name: performer_id
+                  value:

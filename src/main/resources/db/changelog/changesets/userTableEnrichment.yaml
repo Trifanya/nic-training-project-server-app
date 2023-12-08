@@ -1,0 +1,116 @@
+databaseChangeLog:
+  - changeSet:
+      id: userTableEnrichment
+      author: Nikita Trifonov
+      changes:
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Тони"
+              - column:
+                  name: surname
+                  value: "Старк"
+              - column:
+                  name: position
+                  value: "Дизайнер"
+              - column:
+                  name: email
+                  value: "i.am.ironman@avg.com"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$jHV9wOITwW6If.ZywSTr2OBm.NR2JLZTKWgPKB9MsvlDz4phqyp2."
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Стив"
+              - column:
+                  name: surname
+                  value: "Роджерс"
+              - column:
+                  name: email
+                  value: "captain.usa@avg.com"
+              - column:
+                  name: position
+                  value: "Прораб"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$Fskfu/MzWcblbtKeN9mPsOJeFKnUQ1LCV.3cw6HXt/TOYrue8lawu"
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Тор"
+              - column:
+                  name: surname
+                  value: "Одинсон"
+              - column:
+                  name: position
+                  value: "Электрик"
+              - column:
+                  name: email
+                  value: "thundergod@gmail.com"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$lpadnCQkb3kIgsFNJGhmxuxgPJaK78E.Oh5b4IgZJ4QAK3TjkU0Le"
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Питер"
+              - column:
+                  name: surname
+                  value: "Паркер"
+              - column:
+                  name: position
+                  value: "Отделочник"
+              - column:
+                  name: email
+                  value: "friendly.neighbor@avg.com"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$jHV9wOITwW6If.ZywSTr2OBm.NR2JLZTKWgPKB9MsvlDz4phqyp2."
+
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Брюс"
+              - column:
+                  name: surname
+                  value: "Бэннер"
+              - column:
+                  name: position
+                  value: "Грузчик"
+              - column:
+                  name: email
+                  value: "huuuulk@avg.com"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$jHV9wOITwW6If.ZywSTr2OBm.NR2JLZTKWgPKB9MsvlDz4phqyp2."
+
+        - insert:
+            tableName: tms_user
+            columns:
+              - column:
+                  name: name
+                  value: "Клинт"
+              - column:
+                  name: surname
+                  value: "Бартон"
+              - column:
+                  name: position
+                  value: "Сантехник"
+              - column:
+                  name: email
+                  value: "hawk.eye@avg.com"
+              - column:
+                  name: password # Test_passw0rd
+                  value: "$2a$12$jHV9wOITwW6If.ZywSTr2OBm.NR2JLZTKWgPKB9MsvlDz4phqyp2."
+

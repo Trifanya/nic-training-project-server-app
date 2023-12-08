@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changesets/initialTableCreation.yaml
+
+  - include:
+      file: db/changelog/changesets/userTableEnrichment.yaml
+  #- include:
+  #    file: db/changelog/changesets/taskTableEnrichment.yaml

@@ -1,5 +1,6 @@
 package dev.trifanya.taskmanagementsystem.controller;
 
+import dev.trifanya.taskmanagementsystem.dto.SignUpRequest;
 import dev.trifanya.taskmanagementsystem.dto.UserDTO;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.service.UserService;
@@ -21,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<?> createNewUser(@RequestBody UserDTO userDTO) {
-        userService.createNewUser(converter.convertToUser(userDTO));
+    public ResponseEntity<?> createNewUser(@RequestBody SignUpRequest request) {
+        userService.createNewUser(converter.convertToUser(request.getUserDTO()));
 
         return ResponseEntity.ok("Регистрация прошла успешно.");
     }

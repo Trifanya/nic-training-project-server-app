@@ -5,14 +5,22 @@ import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;
+
+    @Override
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
 
     public User getUser(int userId) {
         return userRepository.findById(userId)
@@ -31,4 +39,7 @@ public class UserService {
     public void deleteUser(int userToDeleteId) {
         userRepository.deleteById(userToDeleteId);
     }
+
+
+
 }
