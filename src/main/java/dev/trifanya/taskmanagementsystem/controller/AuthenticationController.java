@@ -15,8 +15,9 @@ public class AuthenticationController {
 
     @PostMapping("/authentication")
     public ResponseEntity<?> signIn(@RequestBody SignInRequest request) {
+        System.out.println("Вызван метод AuthenticationController");
         String jwt = authenticationService.getJWT(request);
 
-        return ResponseEntity.ok(request);
+        return ResponseEntity.ok(jwt);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -49,5 +50,9 @@ public class JWTUtils {
 
     public String getUsername(String token) {
         return getAllClaimsFromToken(token).getSubject();
+    }
+
+    public List<String> getRoles(String token) {
+        return getAllClaimsFromToken(token).get("roles", List.class);
     }
 }

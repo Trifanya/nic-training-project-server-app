@@ -1,7 +1,9 @@
 package dev.trifanya.taskmanagementsystem.util;
 
+import dev.trifanya.taskmanagementsystem.dto.CommentDTO;
 import dev.trifanya.taskmanagementsystem.dto.TaskDTO;
 import dev.trifanya.taskmanagementsystem.dto.UserDTO;
+import dev.trifanya.taskmanagementsystem.model.Comment;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
 import lombok.RequiredArgsConstructor;
@@ -29,4 +31,11 @@ public class MainClassConverter {
         return modelMapper.map(user, UserDTO.class);
     }
 
+    public Comment convertToComment(CommentDTO dto) {
+        return modelMapper.map(dto, Comment.class);
+    }
+
+    public CommentDTO convertToCommentDTO(Comment comment) {
+        return modelMapper.map(comment, CommentDTO.class);
+    }
 }

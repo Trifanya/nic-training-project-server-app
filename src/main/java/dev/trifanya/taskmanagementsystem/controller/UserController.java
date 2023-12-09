@@ -5,6 +5,7 @@ import dev.trifanya.taskmanagementsystem.dto.UserDTO;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.service.UserService;
 import dev.trifanya.taskmanagementsystem.util.MainClassConverter;
+import dev.trifanya.taskmanagementsystem.util.MainExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -24,7 +25,6 @@ public class UserController {
     @PostMapping("/registration")
     public ResponseEntity<?> createNewUser(@RequestBody SignUpRequest request) {
         userService.createNewUser(converter.convertToUser(request.getUserDTO()));
-
         return ResponseEntity.ok("Регистрация прошла успешно.");
     }
 
@@ -35,14 +35,12 @@ public class UserController {
                 currentUser.getId(),
                 converter.convertToUser(userDTO)
         );
-
         return ResponseEntity.ok("Данные успешно отредактированы.");
     }
 
     @DeleteMapping("/{id}/deleteUser")
     public ResponseEntity<?> deleteUser(@PathVariable("id") int userToDeleteId) {
         userService.deleteUser(userToDeleteId);
-
         return ResponseEntity.ok("Пользователь успешно удален.");
     }
 }

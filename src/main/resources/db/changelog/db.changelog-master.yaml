@@ -4,5 +4,5 @@ databaseChangeLog:
 
   - include:
       file: db/changelog/changesets/userTableEnrichment.yaml
-  #- include:
-  #    file: db/changelog/changesets/taskTableEnrichment.yaml
+  - include:
+      file: db/changelog/changesets/taskTableEnrichment.yaml

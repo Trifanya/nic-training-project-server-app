@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
-      id: 0
-      author: admin
+      id: task_enrichment
+      author: Nikita Trifonov
       changes:
         - insert:
             tableName: task
@@ -11,16 +11,19 @@ databaseChangeLog:
                   value: "Спроектировать дизайн кухни"
               - column:
                   name: description
-                  value: ""
+                  value: "Описание отсутствует"
               - column:
                   name: status
-                  value: ""
+                  value: "NOT_STARTED"
               - column:
                   name: priority
-                  value: ""
+                  value: "MEDIUM"
+              - column:
+                  name: created_at
+                  valueDate: "CURRENT_TIMESTAMP"
               - column:
                   name: author_id
-                  value:
+                  value: 2
               - column:
                   name: performer_id
-                  value:
+                  value: 1

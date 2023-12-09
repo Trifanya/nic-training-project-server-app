@@ -4,6 +4,8 @@ import dev.trifanya.taskmanagementsystem.model.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "task")
@@ -25,11 +27,14 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskPriority priority;
 
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
+
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private User author;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
+    @JoinColumn(name = "performer_id", referencedColumnName = "id")
     private User performer;
 }

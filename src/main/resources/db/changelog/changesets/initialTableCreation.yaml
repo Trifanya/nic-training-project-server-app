@@ -70,6 +70,11 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
                   name: author_id
                   type: int
                   constraints:
@@ -82,4 +87,37 @@ databaseChangeLog:
                   constraints:
                     references: tms_user(id)
                     foreignKeyName: fk_performer_id
+                    nullable: false
+        - createTable: # Создание таблицы comment
+            tableName: comment
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: text
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_id
+                  type: int
+                  constraints:
+                    references: task(id)
+                    foreignKeyName: fk_task_id
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: int
+                  constraints:
+                    references: tms_user(id)
+                    foreignKeyName: fk_comment_author
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
                     nullable: false
