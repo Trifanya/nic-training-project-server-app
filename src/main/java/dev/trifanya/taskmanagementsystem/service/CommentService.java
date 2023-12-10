@@ -26,20 +26,18 @@ public class CommentService {
     }
 
     public void createNewComment(Comment comment, Task task, User author) {
-        comment.setCreatedAt(LocalDateTime.now());
-        comment.setTask(task);
-        comment.setAuthor(author);
-
-        commentRepository.save(comment);
+        commentRepository.save(comment
+                .setCreatedAt(LocalDateTime.now())
+                .setTask(task)
+                .setAuthor(author));
     }
 
     public void updateCommentInfo(Comment updatedComment) {
         Comment commentToUpdate = getComment(updatedComment.getId());
-        updatedComment.setCreatedAt(commentToUpdate.getCreatedAt());
-        updatedComment.setTask(commentToUpdate.getTask());
-        updatedComment.setAuthor(commentToUpdate.getAuthor());
-
-        commentRepository.save(updatedComment);
+        commentRepository.save(updatedComment
+                .setCreatedAt(commentToUpdate.getCreatedAt())
+                .setTask(commentToUpdate.getTask())
+                .setAuthor(commentToUpdate.getAuthor()));
     }
 
     public void deleteComment(int commentId) {

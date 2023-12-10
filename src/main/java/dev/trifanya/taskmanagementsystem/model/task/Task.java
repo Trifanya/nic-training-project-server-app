@@ -4,6 +4,7 @@ import dev.trifanya.taskmanagementsystem.model.Comment;
 import dev.trifanya.taskmanagementsystem.model.User;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "task")
+@Accessors(chain = true)
 public class Task {
     @Id
     @Column(name = "id")

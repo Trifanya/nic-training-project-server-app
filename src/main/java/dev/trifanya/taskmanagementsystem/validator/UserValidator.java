@@ -1,6 +1,5 @@
 package dev.trifanya.taskmanagementsystem.validator;
 
-import dev.trifanya.taskmanagementsystem.dto.UserDTO;
 import dev.trifanya.taskmanagementsystem.exception.AlreadyExistException;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.repository.UserRepository;
@@ -18,7 +17,7 @@ public class UserValidator {
     }
 
     public void validateUpdatedUser(int currentUserId, String email) {
-        User namesake = userRepository.findByEmail(email).get();
+        User namesake = userRepository.findByEmail(email).orElse(null);
         if (namesake != null && namesake.getId() != currentUserId) {
             throw new AlreadyExistException("Пользователь с указанным email уже существует.");
         }

@@ -13,6 +13,7 @@ import dev.trifanya.taskmanagementsystem.service.TaskService;
 import dev.trifanya.taskmanagementsystem.util.MainClassConverter;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -31,16 +32,18 @@ public class TaskController {
     }
 
     @GetMapping("/{authorId}")
-    public List<TaskDTO> getCreatedTasks(@PathVariable("authorId") int authorId) {
-        return taskService.getCreatedTasks(authorId)
+    public List<TaskDTO> getTasksByAuthor(@PathVariable("authorId") int authorId,
+                                          @RequestParam Map<String, String> allParams) {
+        return taskService.getTasksByAuthor(authorId, allParams)
                 .stream()
                 .map(converter::convertToTaskDTO)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{performerId}")
-    public List<TaskDTO> getAssignedTasks(@PathVariable("performerId") int performerId) {
-        return taskService.getAssignedTasks(performerId)
+    public List<TaskDTO> getTasksByPerformer(@PathVariable("performerId") int performerId,
+                                             @RequestParam Map<String, String> allParams) {
+        return taskService.getTasksByPerformer(performerId, allParams)
                 .stream()
                 .map(converter::convertToTaskDTO)
                 .collect(Collectors.toList());

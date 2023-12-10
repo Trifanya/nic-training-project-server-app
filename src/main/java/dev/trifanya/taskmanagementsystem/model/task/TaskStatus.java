@@ -1,5 +1,8 @@
 package dev.trifanya.taskmanagementsystem.model.task;
 
+import lombok.Getter;
+
+@Getter
 public enum TaskStatus {
     NOT_STARTED("Не начата"),
     IN_PROGRESS("В процессе"),
@@ -11,7 +14,4 @@ public enum TaskStatus {
         this.ruString = ruString;
     }
 
-    public String getRuString() {
-        return ruString;
-    }
 }

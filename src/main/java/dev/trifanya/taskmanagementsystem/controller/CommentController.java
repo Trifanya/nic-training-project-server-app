@@ -13,6 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/comments")
@@ -22,7 +25,15 @@ public class CommentController {
     private final MainClassConverter converter;
     private final CommentValidator commentValidator;
 
-    @PostMapping("/{taskId}")
+    @GetMapping("/{taskId}")
+    public List<CommentDTO> getComments(@PathVariable("taskId") int taskId) {
+        return commentService.getComments(taskId)
+                .stream()
+                .map(converter::convertToCommentDTO)
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping("/new/{taskId}")
     public ResponseEntity<?> createNewComment(@RequestBody @Valid CommentDTO commentDTO,
                                               @AuthenticationPrincipal User currentUser) {
         Task task = taskService.getTask(commentDTO.getTaskId());

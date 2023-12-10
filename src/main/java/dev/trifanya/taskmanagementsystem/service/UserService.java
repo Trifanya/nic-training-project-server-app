@@ -8,18 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Data
 @Service
 public class UserService implements UserDetailsService {
-
-    @Autowired
     private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
     @Override
     public User loadUserByUsername(String username) {
-        System.out.println("Username: " + username);
         return userRepository.findByEmail(username)
                 .orElseThrow(() -> new NotFoundException("Пользователь с указанным email не найден."));
     }
@@ -29,13 +28,15 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new NotFoundException("Пользователь с указанным id не найден."));
     }
 
-    public void createNewUser(User userToSave) {
-        userRepository.save(userToSave);
+    public User createNewUser(User userToSave) {
+        return userRepository.save(userToSave
+                .setPassword(encoder.encode(userToSave.getPassword())));
     }
 
-    public void updateUserInfo(int userToUpdateId, User updatedUser) {
-        updatedUser.setId(userToUpdateId);
-        userRepository.save(updatedUser);
+    public User updateUserInfo(int userToUpdateId, User updatedUser) {
+        return userRepository.save(updatedUser
+                .setId(userToUpdateId)
+                .setPassword(encoder.encode(updatedUser.getPassword())));
     }
 
     public void deleteUser(int userToDeleteId) {

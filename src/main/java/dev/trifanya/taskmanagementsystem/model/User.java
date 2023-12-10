@@ -3,6 +3,7 @@ package dev.trifanya.taskmanagementsystem.model;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Accessors(chain = true)
 @Table(name = "tms_user")
 public class User implements UserDetails {
     @Id
