@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -30,12 +31,19 @@ public class TaskService {
         return taskRepository.getAllByPerformerId(performerId);
     }
 
-    public void createNewTask(Task taskToSave) {
-        //taskToSave.setTimestamp(LocalDateTime.now());
+    public void createNewTask(User author, User performer, Task taskToSave) {
+        taskToSave.setCreatedAt(LocalDateTime.now());
+        taskToSave.setAuthor(author);
+        taskToSave.setPerformer(performer);
+
         taskRepository.save(taskToSave);
     }
 
     public void updateTaskInfo(Task updatedTask) {
+        Task taskToUpdate = getTask(updatedTask.getId());
+        updatedTask.setAuthor(taskToUpdate.getAuthor());
+        updatedTask.setPerformer(taskToUpdate.getPerformer());
+
         taskRepository.save(updatedTask);
     }
 

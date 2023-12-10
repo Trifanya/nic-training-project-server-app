@@ -18,14 +18,15 @@ public class Comment {
     @Column(name = "text")
     private String text;
 
-    @OneToOne
+    @Column(name = "createdAt")
+    private LocalDateTime createdAt;
+
+    @ManyToOne
     @JoinColumn(name = "task_id", referencedColumnName = "id")
     private Task task;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private User author;
 
-    @Column(name = "createdAt")
-    private LocalDateTime createdAt;
 }

@@ -1,10 +1,12 @@
 package dev.trifanya.taskmanagementsystem.model.task;
 
+import dev.trifanya.taskmanagementsystem.model.Comment;
 import dev.trifanya.taskmanagementsystem.model.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,6 +32,9 @@ public class Task {
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
+    @Column(name = "deadline")
+    private LocalDateTime deadline;
+
     @ManyToOne
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private User author;
@@ -37,4 +42,7 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "performer_id", referencedColumnName = "id")
     private User performer;
+
+    @OneToMany(mappedBy = "task")
+    private List<Comment> comments;
 }

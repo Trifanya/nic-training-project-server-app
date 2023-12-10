@@ -75,6 +75,11 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: deadline
+                  type: timestamp
+                  constraints:
+                    nullable: true
+              - column:
                   name: author_id
                   type: int
                   constraints:
