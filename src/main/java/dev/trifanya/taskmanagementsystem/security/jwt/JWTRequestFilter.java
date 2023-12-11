@@ -44,7 +44,6 @@ public class JWTRequestFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
             } catch (Exception exception) {
-                exception.printStackTrace();
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Недействительный JWT.");
             }
 

@@ -29,36 +29,33 @@ public class TaskSpecificationConstructor {
                 key = keyParts[1];
             }
             switch (key) {
-                case "beforeDateTime":
+                case "beforeDateTime" -> {
                     LocalDateTime beforeDate = LocalDateTime.parse(filter.getValue());
                     taskSpecification = taskSpecification.and(dateIsBefore(dateTimeField, beforeDate));
-                    break;
-                case "afterDateTime":
+                }
+                case "afterDateTime" -> {
                     LocalDateTime afterDate = LocalDateTime.parse(filter.getValue());
                     taskSpecification = taskSpecification.and(dateIsAfter(dateTimeField, afterDate));
-                    break;
-                case "dateTimeRange":
+                }
+                case "dateTimeRange" -> {
                     String[] dates = filter.getValue().split(",");
                     LocalDateTime rangeStart = LocalDateTime.parse(dates[0]);
                     LocalDateTime rangeEnd = LocalDateTime.parse(dates[1]);
                     taskSpecification = taskSpecification.and(dateIsBetween(dateTimeField, rangeStart, rangeEnd));
-                    break;
-                case "priorityValues":
-                    Set<TaskPriority> prioritySet = Arrays.asList((filter.getValue().split(",")))
-                            .stream()
-                            .map(priorityStr -> TaskPriority.valueOf(priorityStr))
+                }
+                case "priorityValues" -> {
+                    Set<TaskPriority> prioritySet = Arrays.stream((filter.getValue().split(",")))
+                            .map(TaskPriority::valueOf)
                             .collect(Collectors.toSet());
                     taskSpecification = taskSpecification.and(taskPriorityInSet(prioritySet));
-                    break;
-                case "statusValues":
-                    Set<TaskStatus> statusSet = Arrays.asList(filter.getValue().split(","))
-                            .stream()
-                            .map(statusStr -> TaskStatus.valueOf(statusStr))
+                }
+                case "statusValues" -> {
+                    Set<TaskStatus> statusSet = Arrays.stream(filter.getValue().split(","))
+                            .map(TaskStatus::valueOf)
                             .collect(Collectors.toSet());
                     taskSpecification = taskSpecification.and(taskStatusInSet(statusSet));
-                    break;
-                default:
-                    throw new InvalidDataException("Неверный формат параметра запроса.");
+                }
+                default -> throw new InvalidDataException("Неверный формат параметра запроса.");
             }
         }
         return taskSpecification;
