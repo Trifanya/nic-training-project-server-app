@@ -28,6 +28,7 @@ import static org.mockito.ArgumentMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
 public class TaskServiceTest {
+
     private static final int TASK_ID = 1;
     private static final int AUTHOR_ID = 1;
     private static final int PAGE_NUMBER = 1;
@@ -167,6 +168,10 @@ public class TaskServiceTest {
     }
 
 
+    /**
+     * Определение поведения mock-объектов.
+     */
+
     private void mockFindById_exist() {
         Mockito.doAnswer(invocationOnMock -> Optional.of(getTask(invocationOnMock.getArgument(0))))
                 .when(taskRepoMock).findById(anyInt());
@@ -198,6 +203,10 @@ public class TaskServiceTest {
     }
 
 
+    /**
+     * Вспомогательные методы.
+     */
+
     private Task getTask(int taskId) {
         return new Task()
                 .setId(taskId)
@@ -208,9 +217,7 @@ public class TaskServiceTest {
     }
 
     private List<Task> getTaskList() {
-        return List.of(
-                getTask(11), getTask(12), getTask(13)
-        );
+        return List.of(getTask(11), getTask(12), getTask(13));
     }
 
     private User getUser(int userId) {

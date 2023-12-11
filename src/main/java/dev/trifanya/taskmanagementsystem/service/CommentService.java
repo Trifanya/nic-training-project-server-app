@@ -1,6 +1,7 @@
 package dev.trifanya.taskmanagementsystem.service;
 
 import dev.trifanya.taskmanagementsystem.exception.AlreadyExistException;
+import dev.trifanya.taskmanagementsystem.exception.NotFoundException;
 import dev.trifanya.taskmanagementsystem.model.Comment;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
@@ -18,23 +19,23 @@ public class CommentService {
 
     public Comment getComment(int commentId) {
         return commentRepository.findById(commentId)
-                .orElseThrow(() -> new AlreadyExistException("Комментарий с указанным id не найден."));
+                .orElseThrow(() -> new NotFoundException("Комментарий с указанным id не найден."));
     }
 
     public List<Comment> getComments(int taskId) {
         return commentRepository.findAllByTaskId(taskId);
     }
 
-    public void createNewComment(Comment comment, Task task, User author) {
-        commentRepository.save(comment
+    public Comment createNewComment(Comment comment, Task task, User author) {
+        return commentRepository.save(comment
                 .setCreatedAt(LocalDateTime.now())
                 .setTask(task)
                 .setAuthor(author));
     }
 
-    public void updateCommentInfo(Comment updatedComment) {
+    public Comment updateCommentInfo(Comment updatedComment) {
         Comment commentToUpdate = getComment(updatedComment.getId());
-        commentRepository.save(updatedComment
+        return commentRepository.save(updatedComment
                 .setCreatedAt(commentToUpdate.getCreatedAt())
                 .setTask(commentToUpdate.getTask())
                 .setAuthor(commentToUpdate.getAuthor()));

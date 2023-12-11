@@ -1,17 +1,15 @@
 package dev.trifanya.taskmanagementsystem.unit.service;
 
-import dev.trifanya.taskmanagementsystem.exception.NotFoundException;
 import dev.trifanya.taskmanagementsystem.model.User;
-import dev.trifanya.taskmanagementsystem.model.task.Task;
-import dev.trifanya.taskmanagementsystem.repository.UserRepository;
 import dev.trifanya.taskmanagementsystem.service.UserService;
-import org.aspectj.weaver.ast.Not;
-import org.junit.jupiter.api.Assertions;
+import dev.trifanya.taskmanagementsystem.repository.UserRepository;
+import dev.trifanya.taskmanagementsystem.exception.NotFoundException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -22,6 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
+
     private static final int USER_ID = 1;
     private static final String USER_EMAIL = "test1@gmail.com";
     private static final String ENCODED_PASSWORD = "Encoded_passw0rd";
@@ -110,6 +109,11 @@ public class UserServiceTest {
         Mockito.verify(userRepoMock).deleteById(USER_ID);
     }
 
+
+    /**
+     * Определение поведения mock-объектов.
+     */
+
     private void mockFindByEmail_exist() {
         Mockito.doAnswer(invocationOnMock -> Optional.of(getUser(USER_ID, invocationOnMock.getArgument(0))))
                 .when(userRepoMock).findByEmail(anyString());
@@ -145,6 +149,11 @@ public class UserServiceTest {
     private void mockEncode() {
         Mockito.when(encoderMock.encode(anyString())).thenReturn(ENCODED_PASSWORD);
     }
+
+
+    /**
+     * Вспомогательные методы.
+     */
 
     private User getUser(int userId, String email) {
         return new User()
