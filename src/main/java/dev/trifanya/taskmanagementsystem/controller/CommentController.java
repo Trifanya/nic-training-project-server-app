@@ -1,17 +1,17 @@
 package dev.trifanya.taskmanagementsystem.controller;
 
-import dev.trifanya.taskmanagementsystem.dto.CommentDTO;
-import dev.trifanya.taskmanagementsystem.model.User;
-import dev.trifanya.taskmanagementsystem.model.task.Task;
-import dev.trifanya.taskmanagementsystem.service.CommentService;
-import dev.trifanya.taskmanagementsystem.service.TaskService;
-import dev.trifanya.taskmanagementsystem.util.MainClassConverter;
-import dev.trifanya.taskmanagementsystem.validator.CommentValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import dev.trifanya.taskmanagementsystem.model.User;
+import dev.trifanya.taskmanagementsystem.dto.CommentDTO;
+import dev.trifanya.taskmanagementsystem.model.task.Task;
+import dev.trifanya.taskmanagementsystem.service.TaskService;
+import dev.trifanya.taskmanagementsystem.service.CommentService;
+import dev.trifanya.taskmanagementsystem.util.MainClassConverter;
+import dev.trifanya.taskmanagementsystem.validator.CommentValidator;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,12 +37,13 @@ public class CommentController {
     public ResponseEntity<?> createNewComment(@RequestBody @Valid CommentDTO commentDTO,
                                               @AuthenticationPrincipal User currentUser) {
         Task task = taskService.getTask(commentDTO.getTaskId());
+        //commentValidator.validateNewComment(task, currentUser.getId());
         commentValidator.validateNewComment(task, currentUser);
         commentService.createNewComment(converter.convertToComment(commentDTO), task, currentUser);
         return ResponseEntity.ok("Комментарий успешно добавлен.");
     }
 
-    @PatchMapping("/{commentId}/update")
+    @PatchMapping("/update")
     public ResponseEntity<?> updateCommentInfo(@RequestBody @Valid CommentDTO commentDTO,
                                                @AuthenticationPrincipal User currentUser) {
         commentValidator.validateUpdatedComment(
@@ -54,7 +55,9 @@ public class CommentController {
     }
 
     @DeleteMapping("{commentId}/delete")
-    public ResponseEntity<?> deleteComment(@PathVariable("commentId") int commentId) {
+    public ResponseEntity<?> deleteComment(@PathVariable("commentId") int commentId,
+                                           @AuthenticationPrincipal User currentUser) {
+        commentValidator.validateDelete(commentService.getComment(commentId).getAuthor(), currentUser);
         commentService.deleteComment(commentId);
         return ResponseEntity.ok("Комментарий успешно удален.");
     }

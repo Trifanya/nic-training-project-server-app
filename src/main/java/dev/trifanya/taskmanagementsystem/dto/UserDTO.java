@@ -8,11 +8,11 @@ import lombok.Data;
 @Data
 public class UserDTO {
     @NotBlank(message = "Необходимо указать имя.")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Имя должно состоять только из букв.")
+    @Pattern(regexp = "^[а-яА-Я]+$", message = "Имя должно состоять только из букв.")
     private String name;
 
     @NotBlank(message = "Необходимо указать фамилию.")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Фамилия должна состоять только из букв.")
+    @Pattern(regexp = "^[а-яА-Я]+$", message = "Фамилия должна состоять только из букв.")
     private String surname;
 
     @NotBlank(message = "Необходимо указать должность.")

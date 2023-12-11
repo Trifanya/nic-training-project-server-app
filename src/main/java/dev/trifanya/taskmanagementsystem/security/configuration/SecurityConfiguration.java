@@ -1,10 +1,10 @@
-package dev.trifanya.taskmanagementsystem.security;
+package dev.trifanya.taskmanagementsystem.security.configuration;
 
 import dev.trifanya.taskmanagementsystem.security.jwt.JWTRequestFilter;
 import dev.trifanya.taskmanagementsystem.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,10 +17,15 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfiguration {
     private final UserService userService;
     private final JWTRequestFilter jwtRequestFilter;
+
+    public SecurityConfiguration(@Lazy UserService userService, JWTRequestFilter jwtRequestFilter) {
+        this.userService = userService;
+        this.jwtRequestFilter = jwtRequestFilter;
+    }
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -48,10 +53,8 @@ public class SecurityConfiguration {
                 .cors(cors -> cors.disable())
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                .requestMatchers(
-                                        "/**",
-                                        "/swagger-ui/**", "/v3/api-docs/**" // для Swagger
-                                ).permitAll())
+                                .requestMatchers("/authentication","/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                                .requestMatchers("/**").authenticated())
                 .sessionManagement(
                         sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )

@@ -5,7 +5,6 @@ import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
 import dev.trifanya.taskmanagementsystem.exception.UnavailableActionException;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
-import dev.trifanya.taskmanagementsystem.repository.TaskRepository;
 import dev.trifanya.taskmanagementsystem.service.TaskService;
 import dev.trifanya.taskmanagementsystem.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,7 @@ public class TaskValidator {
     private final TaskService taskService;
     private final UserService userService;
 
-    public void performNewTaskValidation(TaskDTO taskDTO, User author) {
+    public void validateNewTask(TaskDTO taskDTO, User author) {
         User performer = userService.getUser(taskDTO.getPerformerId());
 
         if (author.equals(performer)) {
@@ -25,7 +24,7 @@ public class TaskValidator {
         }
     }
 
-    public void performUpdatedTaskValidation(TaskDTO taskDTO, User modifier) {
+    public void validateUpdatedTask(TaskDTO taskDTO, User modifier) {
         Task taskToUpdate = taskService.getTask(taskDTO.getId());
 
         // Если кто-то, кто не является автором задачи, пытается изменить ее описание,
@@ -34,7 +33,7 @@ public class TaskValidator {
                 !taskDTO.getPriority().equals(taskToUpdate.getPriority()) ||
                 !taskDTO.getDeadline().equals(taskToUpdate.getDeadline())) &&
                 !modifier.equals(taskToUpdate.getAuthor())) {
-            throw new UnavailableActionException("Описание, приоритет и дедлайн задачи может изменить только ее автор.");
+            throw new UnavailableActionException("Заголовок, описание, приоритет и дедлайн задачи может изменить только ее автор.");
         }
 
         // Если кто-то, кто не является исполнителем задачи, пытается изменить ее
@@ -42,6 +41,12 @@ public class TaskValidator {
         if (!taskDTO.getStatus().equals(taskToUpdate.getStatus()) &&
                 !modifier.equals(taskToUpdate.getPerformer())) {
             throw new UnavailableActionException("Статус задачи может изменить только ее исполнитель.");
+        }
+    }
+
+    public void validateDelete(User author, User deleter) {
+        if (!author.equals(deleter)) {
+            throw new UnavailableActionException("Удалить задачу может только ее автор.");
         }
     }
 }

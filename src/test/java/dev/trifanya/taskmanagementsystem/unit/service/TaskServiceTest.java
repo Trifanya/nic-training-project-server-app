@@ -37,6 +37,8 @@ public class TaskServiceTest {
     private static final String SORT_BY = "id";
     private static final String SORT_DIR_ASC = "ASC";
     private static final String UPDATED_TITLE = "Updated title";
+    private static final String FIELD_NAME_AUTHOR = "author";
+    private static final String FIELD_NAME_PERFORMER = "performer";
     private static final LocalDateTime CREATED_AT = LocalDateTime.parse("2023-12-10T15:52:00");
 
     @Mock
@@ -72,14 +74,15 @@ public class TaskServiceTest {
     @Test
     public void getTasksByAuthor_shouldFetchPageFilters() {
         // Given
+        User author = getUser(AUTHOR_ID);
         Map<String, String> expectedFilters = Map.of("remainingKey", "remainingValue");
         mockFindAll();
 
         // When
-        testingService.getTasksByAuthor(AUTHOR_ID, getFilters());
+        testingService.getTasksByAuthor(author, getFilters());
 
         // Then
-        Mockito.verify(constructorMock).createTaskSpecification("author_id", AUTHOR_ID, expectedFilters);
+        Mockito.verify(constructorMock).createTaskSpecification(FIELD_NAME_AUTHOR, author, expectedFilters);
     }
 
     @Test
@@ -88,7 +91,7 @@ public class TaskServiceTest {
         mockFindAll();
 
         // When
-        List<Task> resultTaskList = testingService.getTasksByAuthor(AUTHOR_ID, getFilters());
+        List<Task> resultTaskList = testingService.getTasksByAuthor(getUser(AUTHOR_ID), getFilters());
 
         // Then
         Mockito.verify(taskRepoMock).findAll((Specification<Task>) null, getPageRequest());
@@ -98,14 +101,15 @@ public class TaskServiceTest {
     @Test
     public void getTasksByPerformer_shoudFetchPageFilters() {
         // Given
+        User performer = getUser(PERFORMER_ID);
         Map<String, String> expectedFilters = Map.of("remainingKey", "remainingValue");
         mockFindAll();
 
         // When
-        testingService.getTasksByPerformer(PERFORMER_ID, getFilters());
+        testingService.getTasksByPerformer(performer, getFilters());
 
         // Then
-        Mockito.verify(constructorMock).createTaskSpecification("performer_id", PERFORMER_ID, expectedFilters);
+        Mockito.verify(constructorMock).createTaskSpecification(FIELD_NAME_PERFORMER, performer, expectedFilters);
     }
 
     @Test
@@ -114,7 +118,7 @@ public class TaskServiceTest {
         mockFindAll();
 
         // When
-        List<Task> resultTaskList = testingService.getTasksByPerformer(PERFORMER_ID, getFilters());
+        List<Task> resultTaskList = testingService.getTasksByPerformer(getUser(PERFORMER_ID), getFilters());
 
         // Then
         Mockito.verify(taskRepoMock).findAll((Specification<Task>) null, getPageRequest());

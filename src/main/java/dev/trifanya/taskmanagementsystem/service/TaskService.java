@@ -25,16 +25,16 @@ public class TaskService {
                 .orElseThrow(() -> new NotFoundException("Задача с указанным id не найдена."));
     }
 
-    public List<Task> getTasksByAuthor(int authorId, Map<String, String> filters) {
+    public List<Task> getTasksByAuthor(User author, Map<String, String> filters) {
         return taskRepository.findAll(
-                constructor.createTaskSpecification("author_id", authorId, filters),
+                constructor.createTaskSpecification("author", author, filters),
                 fetchPageRequest(filters)
         ).getContent();
     }
 
-    public List<Task> getTasksByPerformer(int performerId, Map<String, String> filters) {
+    public List<Task> getTasksByPerformer(User performer, Map<String, String> filters) {
         return taskRepository.findAll(
-                constructor.createTaskSpecification("performer_id", performerId, filters),
+                constructor.createTaskSpecification("performer", performer, filters),
                 fetchPageRequest(filters)
         ).getContent();
     }
@@ -61,10 +61,13 @@ public class TaskService {
     }
 
     private PageRequest fetchPageRequest(Map<String, String> filters) {
-        int pageNumber = Integer.parseInt(filters.remove("pageNumber"));
-        int itemsPerPage = Integer.parseInt(filters.remove("itemsPerPage"));
-        Sort.Direction sortDir = Sort.Direction.valueOf(filters.remove("sortDir"));
-        String sortBy = filters.remove("sortBy");
+        int pageNumber = Integer.parseInt(
+                filters.get("pageNumber") == null ? "0" : filters.remove("pageNumber"));
+        int itemsPerPage = Integer.parseInt(
+                filters.get("itemsPerPage") == null ? "10" : filters.remove("itemsPerPage"));
+        Sort.Direction sortDir = Sort.Direction.valueOf(
+                filters.get("sortDir") == null ? "ASC" : filters.remove("sortDir"));
+        String sortBy = filters.get("sortBy") == null ? "id" : filters.remove("sortBy");
 
         return PageRequest.of(pageNumber, itemsPerPage, sortDir, sortBy);
     }

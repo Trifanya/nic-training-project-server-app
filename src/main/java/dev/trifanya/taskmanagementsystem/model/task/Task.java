@@ -8,6 +8,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -47,4 +48,22 @@ public class Task {
 
     @OneToMany(mappedBy = "task")
     private List<Comment> comments;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Task task)) return false;
+        return id == task.id &&
+                Objects.equals(title, task.title) &&
+                Objects.equals(description, task.description) &&
+                status == task.status &&
+                priority == task.priority &&
+                Objects.equals(createdAt, task.createdAt) &&
+                Objects.equals(deadline, task.deadline);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, status, priority, createdAt, deadline);
+    }
 }

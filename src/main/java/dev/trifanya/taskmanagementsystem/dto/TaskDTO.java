@@ -24,9 +24,8 @@ public class TaskDTO {
     @Future
     private LocalDateTime deadline;
 
-    //@Pattern(regexp = "")
     private TaskStatus status;
 
-    //@Pattern(regexp = "")
     private TaskPriority priority;
+
 }
