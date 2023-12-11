@@ -1,8 +1,8 @@
 package dev.trifanya.taskmanagementsystem.repository;
 
 import dev.trifanya.taskmanagementsystem.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 

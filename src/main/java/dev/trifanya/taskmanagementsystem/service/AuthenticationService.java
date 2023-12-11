@@ -1,13 +1,13 @@
 package dev.trifanya.taskmanagementsystem.service;
 
-import dev.trifanya.taskmanagementsystem.dto.SignInRequest;
-import dev.trifanya.taskmanagementsystem.model.User;
-import dev.trifanya.taskmanagementsystem.security.jwt.JWTUtils;
 import lombok.RequiredArgsConstructor;
+import dev.trifanya.taskmanagementsystem.model.User;
+import dev.trifanya.taskmanagementsystem.dto.SignInRequest;
+import dev.trifanya.taskmanagementsystem.security.jwt.JWTUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

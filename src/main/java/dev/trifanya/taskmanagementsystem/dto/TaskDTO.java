@@ -1,9 +1,9 @@
 package dev.trifanya.taskmanagementsystem.dto;
 
-import dev.trifanya.taskmanagementsystem.model.task.TaskPriority;
-import dev.trifanya.taskmanagementsystem.model.task.TaskStatus;
-import jakarta.validation.constraints.*;
 import lombok.Data;
+import jakarta.validation.constraints.*;
+import dev.trifanya.taskmanagementsystem.model.task.TaskStatus;
+import dev.trifanya.taskmanagementsystem.model.task.TaskPriority;
 
 import java.time.LocalDateTime;
 
@@ -11,14 +11,13 @@ import java.time.LocalDateTime;
 public class TaskDTO {
     private int id;
 
-
     @NotBlank(message = "Необходимо указать название задачи.")
     private String title;
 
     @NotBlank(message = "Необходимо указать описание задачи.")
     private String description;
 
-    @NotNull
+    @NotNull(message = "Необходимо указать исполнителя задачи.")
     private int performerId;
 
     @Future

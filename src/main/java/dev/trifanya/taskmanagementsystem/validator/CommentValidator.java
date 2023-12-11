@@ -1,9 +1,9 @@
 package dev.trifanya.taskmanagementsystem.validator;
 
-import dev.trifanya.taskmanagementsystem.exception.UnavailableActionException;
+import org.springframework.stereotype.Component;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
-import org.springframework.stereotype.Component;
+import dev.trifanya.taskmanagementsystem.exception.UnavailableActionException;
 
 @Component
 public class CommentValidator {

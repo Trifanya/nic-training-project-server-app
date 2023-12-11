@@ -1,14 +1,14 @@
 package dev.trifanya.taskmanagementsystem.validator;
 
-import dev.trifanya.taskmanagementsystem.dto.TaskDTO;
-import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
-import dev.trifanya.taskmanagementsystem.exception.UnavailableActionException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import dev.trifanya.taskmanagementsystem.model.User;
+import dev.trifanya.taskmanagementsystem.dto.TaskDTO;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
 import dev.trifanya.taskmanagementsystem.service.TaskService;
 import dev.trifanya.taskmanagementsystem.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
+import dev.trifanya.taskmanagementsystem.exception.UnavailableActionException;
 
 @Component
 @RequiredArgsConstructor

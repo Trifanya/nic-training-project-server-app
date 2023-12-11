@@ -1,14 +1,14 @@
 package dev.trifanya.taskmanagementsystem.util;
 
-import dev.trifanya.taskmanagementsystem.dto.CommentDTO;
-import dev.trifanya.taskmanagementsystem.dto.TaskDTO;
-import dev.trifanya.taskmanagementsystem.dto.UserDTO;
-import dev.trifanya.taskmanagementsystem.model.Comment;
-import dev.trifanya.taskmanagementsystem.model.User;
-import dev.trifanya.taskmanagementsystem.model.task.Task;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
+import dev.trifanya.taskmanagementsystem.model.User;
+import dev.trifanya.taskmanagementsystem.dto.TaskDTO;
+import dev.trifanya.taskmanagementsystem.dto.UserDTO;
+import dev.trifanya.taskmanagementsystem.model.Comment;
+import dev.trifanya.taskmanagementsystem.dto.CommentDTO;
+import dev.trifanya.taskmanagementsystem.model.task.Task;
 
 @Component
 @RequiredArgsConstructor

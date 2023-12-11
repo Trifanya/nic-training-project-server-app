@@ -1,16 +1,16 @@
 package dev.trifanya.taskmanagementsystem.service.specification;
 
-import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.domain.Specification;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
-import dev.trifanya.taskmanagementsystem.model.task.TaskPriority;
 import dev.trifanya.taskmanagementsystem.model.task.TaskStatus;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.stereotype.Component;
+import dev.trifanya.taskmanagementsystem.model.task.TaskPriority;
+import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
 
-import java.time.LocalDateTime;
 import java.util.*;
+import java.time.LocalDateTime;
 import java.util.stream.Collectors;
 
 @Component

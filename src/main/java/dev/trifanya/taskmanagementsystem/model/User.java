@@ -1,16 +1,16 @@
 package dev.trifanya.taskmanagementsystem.model;
 
-import dev.trifanya.taskmanagementsystem.model.task.Task;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import jakarta.persistence.*;
+import dev.trifanya.taskmanagementsystem.model.task.Task;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Collection;
 
 @Data
 @Entity

@@ -1,17 +1,17 @@
 package dev.trifanya.taskmanagementsystem.security.jwt;
 
-import dev.trifanya.taskmanagementsystem.model.User;
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import dev.trifanya.taskmanagementsystem.model.User;
 
-import java.time.Duration;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Date;
+import java.util.List;
+import java.util.HashMap;
+import java.time.Duration;
 
 @Component
 public class JWTUtils {

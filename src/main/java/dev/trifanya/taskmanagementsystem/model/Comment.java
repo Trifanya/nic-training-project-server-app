@@ -1,12 +1,12 @@
 package dev.trifanya.taskmanagementsystem.model;
 
-import dev.trifanya.taskmanagementsystem.model.task.Task;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.Accessors;
+import jakarta.persistence.*;
+import dev.trifanya.taskmanagementsystem.model.task.Task;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
+import java.time.LocalDateTime;
 
 @Data
 @Entity

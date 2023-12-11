@@ -1,10 +1,10 @@
 package dev.trifanya.taskmanagementsystem.validator;
 
-import dev.trifanya.taskmanagementsystem.exception.AlreadyExistException;
-import dev.trifanya.taskmanagementsystem.model.User;
-import dev.trifanya.taskmanagementsystem.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import dev.trifanya.taskmanagementsystem.model.User;
+import dev.trifanya.taskmanagementsystem.repository.UserRepository;
+import dev.trifanya.taskmanagementsystem.exception.AlreadyExistException;
 
 @Component
 @RequiredArgsConstructor
