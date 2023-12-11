@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
 
   app:
@@ -8,17 +10,17 @@ services:
     depends_on:
       - postgres_db
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=My_passw0rd
     ports:
-      - 8080:8080
+      - 8081:8080
 
   postgres_db:
-    container_name: task_management_system_db
+    container_name: task-management-system-db
     image: postgres:16rc1-alpine
     environment:
-      - POSTGRES_PASSWORD=My_passw0rd
       - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=My_passw0rd
     ports:
       - 5432:5432

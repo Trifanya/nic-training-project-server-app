@@ -26,16 +26,18 @@ public class TaskService {
     }
 
     public List<Task> getTasksByAuthor(User author, Map<String, String> filters) {
+        PageRequest pageRequest = fetchPageRequest(filters);
         return taskRepository.findAll(
                 constructor.createTaskSpecification("author", author, filters),
-                fetchPageRequest(filters)
+                pageRequest
         ).getContent();
     }
 
     public List<Task> getTasksByPerformer(User performer, Map<String, String> filters) {
+        PageRequest pageRequest = fetchPageRequest(filters);
         return taskRepository.findAll(
                 constructor.createTaskSpecification("performer", performer, filters),
-                fetchPageRequest(filters)
+                pageRequest
         ).getContent();
     }
 
