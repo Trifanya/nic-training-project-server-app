@@ -29,33 +29,33 @@ public class TaskSpecificationConstructor {
                 key = keyParts[1];
             }
             switch (key) {
-                case "beforeDateTime" -> {
+                case "beforeDateTime":
                     LocalDateTime beforeDate = LocalDateTime.parse(filter.getValue());
                     taskSpecification = taskSpecification.and(dateIsBefore(dateTimeField, beforeDate));
-                }
-                case "afterDateTime" -> {
+                    break;
+                case "afterDateTime":
                     LocalDateTime afterDate = LocalDateTime.parse(filter.getValue());
                     taskSpecification = taskSpecification.and(dateIsAfter(dateTimeField, afterDate));
-                }
-                case "dateTimeRange" -> {
+                    break;
+                case "dateTimeRange":
                     String[] dates = filter.getValue().split(",");
                     LocalDateTime rangeStart = LocalDateTime.parse(dates[0]);
                     LocalDateTime rangeEnd = LocalDateTime.parse(dates[1]);
                     taskSpecification = taskSpecification.and(dateIsBetween(dateTimeField, rangeStart, rangeEnd));
-                }
-                case "priorityValues" -> {
+                    break;
+                case "priorityValues":
                     Set<TaskPriority> prioritySet = Arrays.stream((filter.getValue().split(",")))
                             .map(TaskPriority::valueOf)
                             .collect(Collectors.toSet());
                     taskSpecification = taskSpecification.and(taskPriorityInSet(prioritySet));
-                }
-                case "statusValues" -> {
+                    break;
+                case "statusValues":
                     Set<TaskStatus> statusSet = Arrays.stream(filter.getValue().split(","))
                             .map(TaskStatus::valueOf)
                             .collect(Collectors.toSet());
                     taskSpecification = taskSpecification.and(taskStatusInSet(statusSet));
-                }
-                default -> throw new InvalidDataException("Неверный формат параметра запроса.");
+                    break;
+                default: throw new InvalidDataException("Неверный формат параметра запроса.");
             }
         }
         return taskSpecification;

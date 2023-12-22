@@ -2,7 +2,7 @@ package dev.trifanya.taskmanagementsystem.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
 
 import java.util.Objects;
@@ -35,7 +35,8 @@ public class Comment {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Comment comment)) return false;
+        if (!(o instanceof Comment)) return false;
+        Comment comment = (Comment) o;
         return id == comment.id &&
                 Objects.equals(text, comment.text) &&
                 Objects.equals(createdAt, comment.createdAt);

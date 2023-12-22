@@ -2,8 +2,8 @@ package dev.trifanya.taskmanagementsystem.dto;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Accessors(chain = true)

@@ -3,7 +3,7 @@ package dev.trifanya.taskmanagementsystem.util;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import jakarta.validation.ConstraintViolationException;
+import javax.validation.ConstraintViolationException;
 import dev.trifanya.taskmanagementsystem.exception.NotFoundException;
 import dev.trifanya.taskmanagementsystem.exception.InvalidDataException;
 import dev.trifanya.taskmanagementsystem.exception.AlreadyExistException;

@@ -2,12 +2,13 @@ package dev.trifanya.taskmanagementsystem.model;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import jakarta.persistence.*;
 import dev.trifanya.taskmanagementsystem.model.task.Task;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Collection;
@@ -45,7 +46,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        return authorities;
     }
 
     @Override
@@ -76,7 +79,8 @@ public class User implements UserDetails {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User user)) return false;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
         return id == user.id &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(surname, user.surname) &&

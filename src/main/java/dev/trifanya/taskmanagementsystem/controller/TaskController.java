@@ -1,6 +1,6 @@
 package dev.trifanya.taskmanagementsystem.controller;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

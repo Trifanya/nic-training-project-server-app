@@ -1,6 +1,6 @@
 package dev.trifanya.taskmanagementsystem.controller;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import dev.trifanya.taskmanagementsystem.model.User;
 import dev.trifanya.taskmanagementsystem.dto.UserDTO;

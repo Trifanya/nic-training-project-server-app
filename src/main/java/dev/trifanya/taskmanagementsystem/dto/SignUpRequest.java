@@ -1,9 +1,9 @@
 package dev.trifanya.taskmanagementsystem.dto;
 
 import lombok.Data;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Data
 public class SignUpRequest {

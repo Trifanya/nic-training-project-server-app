@@ -1,7 +1,7 @@
 package dev.trifanya.taskmanagementsystem.dto;
 
 import lombok.Data;
-import jakarta.validation.constraints.*;
+import javax.validation.constraints.*;
 import dev.trifanya.taskmanagementsystem.model.task.TaskStatus;
 import dev.trifanya.taskmanagementsystem.model.task.TaskPriority;
 

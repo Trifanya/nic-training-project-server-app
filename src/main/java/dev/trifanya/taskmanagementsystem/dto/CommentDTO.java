@@ -1,8 +1,8 @@
 package dev.trifanya.taskmanagementsystem.dto;
 
 import lombok.Data;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Data
 public class CommentDTO {
