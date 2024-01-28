@@ -1,6 +1,5 @@
 package dev.trifanya.tms_server.service;
 
-import dev.trifanya.tms_server.mybatis.mapper.TaskMapper;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 import dev.trifanya.tms_server.model.User;
@@ -14,7 +13,6 @@ import java.time.LocalDateTime;
 @Data
 @Service
 public class TaskService {
-    private final TaskMapper taskMapper;
     //private final TaskSpecificationConstructor constructor;
 
     public Task getTask(int taskId) {

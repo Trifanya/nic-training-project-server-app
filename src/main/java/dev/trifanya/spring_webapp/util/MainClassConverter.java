@@ -1,14 +1,14 @@
 package dev.trifanya.tms_server.util;
 
+import dev.trifanya.spring_webapp.dto.TaskDTO;
+import dev.trifanya.spring_webapp.model.User;
+import dev.trifanya.spring_webapp.model.task.Task;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import dev.trifanya.tms_server.model.User;
-import dev.trifanya.tms_server.dto.TaskDTO;
 import dev.trifanya.tms_server.dto.UserDTO;
 import dev.trifanya.tms_server.model.Comment;
 import dev.trifanya.tms_server.dto.CommentDTO;
-import dev.trifanya.tms_server.model.task.Task;
 
 @Component
 @RequiredArgsConstructor

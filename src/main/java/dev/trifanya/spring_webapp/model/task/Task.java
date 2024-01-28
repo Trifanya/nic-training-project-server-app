@@ -1,17 +1,17 @@
-package dev.trifanya.tms_server.model.task;
+package dev.trifanya.spring_webapp.model.task;
 
+import dev.trifanya.spring_webapp.model.User;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import dev.trifanya.tms_server.model.User;
-import dev.trifanya.tms_server.model.Comment;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 import java.time.LocalDateTime;
 
 @Data
 @Accessors(chain = true)
-public class Task {
+public class Task implements Serializable {
     private int id;
 
     private String title;

@@ -1,19 +1,12 @@
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/task_management_system_db
-    username: postgres
-    password: My_passw0rd
+  activemq:
+    user: admin
+    password: admin
+    crud-to-web-queue: "Response Queue"
+    web-to-crud-queue: "Request Queue"
+    client-id: "Spring Web App"
+    broker-url: tcp://localhost:61616
+    packages:
+      trusted: org.springframework.remoting.support,java.lang,dev.trifanya.spring_webapp
 
-  liquibase:
-    enabled: true
 
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        show_sql: true
-
-jwt:
-  secret: 1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0pldhgdlfjgoailsrgjxlk34wtrdgh
-  lifetime: 30d

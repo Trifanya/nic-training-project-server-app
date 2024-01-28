@@ -1,8 +1,9 @@
 package dev.trifanya.tms_server.model;
 
+import dev.trifanya.spring_webapp.model.User;
+import dev.trifanya.spring_webapp.model.task.Task;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import dev.trifanya.tms_server.model.task.Task;
 
 import java.util.Objects;
 import java.time.LocalDateTime;

@@ -8,10 +8,9 @@
 		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.trifanya</groupId>
-	<artifactId>TMS_ServerApp</artifactId>
+	<groupId>dev.trifanya.spring_webapp</groupId>
+	<artifactId>SpringWebApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>task-management-system</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -19,29 +18,25 @@
 		<modelmapper.version>3.2.0</modelmapper.version>
 		<mybatisSpringBoot.version>2.3.0</mybatisSpringBoot.version>
 		<jwt.version>0.11.5</jwt.version>
+		<spring-boot-activemq.version>3.1.0</spring-boot-activemq.version>
 	</properties>
 
 	<dependencies>
-
-		<!-- Spring Boot starters -->
-		<!--<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -66,23 +61,16 @@
 			<version>${modelmapper.version}</version>
 		</dependency>
 
-
-		<!--
-		Includes mybatis-spring-boot-autoconfigure, spring-boot-starter,
-		spring-boot-starter-jdbc and mybatis-spring dependencies
-		-->
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatisSpringBoot.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+			<!--<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>-->
 		</dependency>
-
-		<dependency>
-			<groupId>org.mybatis.dynamic-sql</groupId>
-			<artifactId>mybatis-dynamic-sql</artifactId>
-			<version>1.5.0</version>
-		</dependency>
-
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -90,7 +78,6 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-
 
 	</dependencies>
 

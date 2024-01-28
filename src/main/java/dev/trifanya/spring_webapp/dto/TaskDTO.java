@@ -1,10 +1,9 @@
-package dev.trifanya.tms_server.dto;
+package dev.trifanya.spring_webapp.dto;
 
+import dev.trifanya.spring_webapp.model.task.TaskPriority;
+import dev.trifanya.spring_webapp.model.task.TaskStatus;
 import lombok.Data;
 import javax.validation.constraints.*;
-import dev.trifanya.tms_server.model.task.TaskStatus;
-import dev.trifanya.tms_server.model.task.TaskPriority;
-
 import java.time.LocalDateTime;
 
 @Data

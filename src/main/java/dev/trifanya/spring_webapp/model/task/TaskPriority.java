@@ -1,4 +1,4 @@
-package dev.trifanya.tms_server.model.task;
+package dev.trifanya.spring_webapp.model.task;
 
 import lombok.Getter;
 
