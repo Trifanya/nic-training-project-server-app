@@ -5,7 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class GetTaskRequest {
+public class GetObjectRequest {
     private String requestTitle;
-    private int taskId;
+    private int objectId;
 }

@@ -1,6 +1,5 @@
-package dev.trifanya.tms_server.model;
+package dev.trifanya.spring_webapp.model;
 
-import dev.trifanya.spring_webapp.model.User;
 import dev.trifanya.spring_webapp.model.task.Task;
 import lombok.Data;
 import lombok.experimental.Accessors;

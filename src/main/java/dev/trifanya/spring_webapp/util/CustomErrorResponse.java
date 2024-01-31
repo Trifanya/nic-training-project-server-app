@@ -1,4 +1,4 @@
-package dev.trifanya.tms_server.util;
+package dev.trifanya.spring_webapp.util;
 
 import lombok.Data;
 

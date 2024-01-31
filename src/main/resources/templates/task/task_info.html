@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en", xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task info</title>
+    <link href="/task/task_info.css" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="navigation">
+        <div class="navigation_item_block">
+            <form action="/tasks/list" method="get">
+                <input type="submit" value="Список задач" class="nav_item_button">
+            </form>
+        </div>
+        <div class="navigation_item_block">
+            <form action="/users/list" method="get">
+                <input type="submit" value="Список пользователей" class="nav_item_button">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="task_info">
+    <div class="id-title">
+        <div class="id">
+            <div class="label">ID:</div>
+            <div class="value" th:text="${task.getId()}">ID</div>
+        </div>
+        <div class="title">
+            <div class="label">Заголовок:</div>
+            <div class="value" th:text="${task.getTitle()}">title</div>
+        </div>
+    </div>
+    <div class="author-priority">
+        <div class="author">
+            <div class="label">Автор:</div>
+            <div class="value" th:text="${task.getAuthor().getEmail()}">author</div>
+        </div>
+        <div class="priority">
+            <div class="label">Приоритет:</div>
+            <div class="value" th:text="${task.getPriority()}">priority</div>
+        </div>
+    </div>
+    <div class="performer-status">
+        <div class="performer">
+            <div class="label">Исполнитель:</div>
+            <div class="value" th:text="${task.getPerformer().getEmail()}">performer</div>
+        </div>
+        <div class="status">
+            <div class="label">Статус:</div>
+            <div class="value" th:text="${task.getStatus()}">status</div>
+        </div>
+    </div>
+    <div class="timestamp-deadline">
+        <div class="timestamp">
+            <div class="label">Дата создания:</div>
+            <div class="value" th:text="${task.getCreatedAt()}">created at</div>
+        </div>
+        <div class="deadline">
+            <div class="label">Дедлайн:</div>
+            <div class="value" th:text="${task.getDeadline()}">deadline</div>
+        </div>
+    </div>
+    <div class="description">
+        <div class="label">Описание:</div>
+        <div class="value" th:text="${task.getDescription()}">description</div>
+    </div>
+    <div class="comments_button">
+        <form action="" method="get">
+            <input type="submit" value="Посмотреть комментарии к задаче" class="show_comments_button">
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

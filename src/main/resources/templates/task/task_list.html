@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" , xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task list</title>
+    <link href="/task/task_list.css" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="navigation">
+        <div class="navigation_item_block">
+            <form action="/tasks/list" method="get">
+                <input type="submit" value="Список задач" class="nav_item_button">
+            </form>
+        </div>
+        <div class="navigation_item_block">
+            <form action="/users/list" method="get">
+                <input type="submit" value="Список пользователей" class="nav_item_button">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="main_block">
+    <div class="content_block">
+        <div class="search_block">
+            <form th:method="POST" th:action="@{/tasks/list}">
+                <input class="task_name_input" type="text" placeholder="Введите название задачи..."/>
+                <input class="search_button" type="submit" value="Поиск"/>
+            </form>
+        </div>
+        <div class="sort_block">
+            <div class="sort_by">
+                <select>
+                    <option>Сортировка по умолчанию</option>
+                    <option>Сортировка по дедлайну</option>
+                    <option>Сортировка по дате создания</option>
+                </select>
+            </div>
+            <div class="sort_dir">
+                <select>
+                    <option>Сортировать по возрастанию</option>
+                    <option>Сортировать по убыванию</option>
+                </select>
+            </div>
+        </div>
+        <div class="task_list_block">
+            <table class="task_table">
+                <thead>
+                <tr>
+                    <th class="top_left">ID</th>
+                    <th class="top_center">Название</th>
+                    <th class="top_right">Приоритет</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task : ${taskList}">
+                    <td th:text="${task.getId()}">taskId</td>
+                    <td><a th:href="@{/tasks/task_{id}(id=${task.getId()})}" th:text="${task.getTitle()}"/></td>
+                    <td th:text="${task.getPriority()}">taskPriority</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="filters_block">
+        <div class="title">Фильтры</div>
+        <div class="deadline">
+            <div class="title">Дедлайн</div>
+            <div class="range_start">
+                <label for="deadline_start">От:</label>
+                <input type="date" id="deadline_start"/>
+            </div>
+            <div class="range_end">
+                <label for="deadline_end">До:</label>
+                <input type="date" id="deadline_end"/>
+            </div>
+        </div>
+        <div class="timestamp">
+            <div class="title">Дата создания</div>
+            <div class="range_start">
+                <label for="timestamp_start">От:</label>
+                <input type="date" id="timestamp_start"/>
+            </div>
+            <div class="range_end">
+                <label for="timestamp_end">До:</label>
+                <input type="date" id="timestamp_end"/>
+            </div>
+        </div>
+        <div class="priority">
+            <div class="title">Приоритет</div>
+            <div class="priority_value">
+                <select>
+                    <option>Низкий</option>
+                    <option>Средний</option>
+                    <option>Высокий</option>
+                </select>
+            </div>
+        </div>
+        <div class="status">
+            <div class="title">Статус</div>
+            <div class="status_value">
+                <select>
+                    <option>Не начата</option>
+                    <option>В процессе</option>
+                    <option>Выполнена</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

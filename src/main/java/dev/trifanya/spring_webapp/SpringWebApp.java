@@ -2,6 +2,7 @@ package dev.trifanya.spring_webapp;
 
 import dev.trifanya.spring_webapp.model.task.Task;
 import liquibase.repackaged.org.apache.commons.collections4.map.SingletonMap;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -40,5 +41,10 @@ public class SpringWebApp {
 		converter.setTargetType(MessageType.TEXT);
 		converter.setTypeIdPropertyName("_type");
 		return converter;
+	}
+
+	@Bean
+	public ModelMapper modelMapper() {
+		return new ModelMapper();
 	}
 }

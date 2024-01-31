@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Data
 @Accessors(chain = true)
-public class GetTaskListRequest {
+public class GetObjectListRequest {
     private String requestTitle;
     private Map<String, String> filters;
     private String sortBy;

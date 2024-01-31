@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 99vw;
+    font-size: 20px;
+    background-color: white;
+    color: black;
+}
+
+div {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    border-radius: 15px;
+    border-color: black;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    height: 6vh;
+    width: 98vw;
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: inset 0px 0px 0px 0px black;
+    justify-content: space-between;
+}
+
+.navigation_item_block {
+    height: 6vh;
+    width: 48vw;
+    align-items: center;
+}
+
+.nav_item_button {
+    height: 6vh;
+    width: 48vw;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.task_info {
+    flex-direction: column;
+    height: 86vh;
+    width: 98vw;
+    justify-content: space-around;
+}
+
+.id-title {
+    height: 6vh;
+    width: 72vw;
+    border: none;
+    justify-content: space-between;
+}
+.id {
+    height: 6vh;
+    width: 10vw;
+}
+.title {
+    height: 6vh;
+    width: 60vw;
+}
+
+.author-priority {
+    height: 6vh;
+    width: 72vw;
+    border: none;
+    justify-content: space-between;
+}
+.author {
+    height: 6vh;
+    width: 45vw;
+}
+.priority {
+    height: 6vh;
+    width: 25vw;
+}
+
+.performer-status {
+    height: 6vh;
+    width: 72vw;
+    border: none;
+    justify-content: space-between;
+}
+.performer {
+    height: 6vh;
+    width: 45vw;
+}
+.status {
+    height: 6vh;
+    width: 25vw;
+}
+
+.timestamp-deadline {
+    height: 6vh;
+    width: 72vw;
+    border: none;
+    justify-content: space-between;
+}
+.timestamp {
+    height: 6vh;
+    width: 35vw;
+}
+.deadline {
+    height: 6vh;
+    width: 35vw;
+}
+
+.description {
+    height: 30vh;
+    width: 72vw;
+}
+
+.label {
+    height: 6vh;
+    width: auto;
+    border: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.value {
+    height: 6vh;
+    width: 100%;
+    border: none;
+    border-left: 3px solid black;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.description .label {
+    height: 30vh;
+    width: auto;
+}
+
+.description .value {
+    height: 30vh;
+    width: 100%;
+}
+
+.comments_button {
+    height: 6vh;
+    width: 30vw;
+}
+
+.show_comments_button {
+    height: 6vh;
+    width: 30vw;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
