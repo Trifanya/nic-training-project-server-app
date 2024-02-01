@@ -1,14 +1,12 @@
 package dev.trifanya.spring_webapp.util;
 
 import dev.trifanya.spring_webapp.dto.TaskDTO;
-import dev.trifanya.spring_webapp.model.Comment;
 import dev.trifanya.spring_webapp.model.User;
 import dev.trifanya.spring_webapp.model.task.Task;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import dev.trifanya.tms_server.dto.UserDTO;
-import dev.trifanya.tms_server.dto.CommentDTO;
 
 @Component
 @RequiredArgsConstructor
@@ -29,13 +27,5 @@ public class MainClassConverter {
 
     public UserDTO convertToUserDTO(User user) {
         return modelMapper.map(user, UserDTO.class);
-    }
-
-    public Comment convertToComment(CommentDTO dto) {
-        return modelMapper.map(dto, Comment.class);
-    }
-
-    public CommentDTO convertToCommentDTO(Comment comment) {
-        return modelMapper.map(comment, CommentDTO.class);
     }
 }

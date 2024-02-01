@@ -32,8 +32,14 @@ public class TaskController {
     @GetMapping("/list")
     public String getTaskList(@RequestParam Map<String, String> requestParams, Model model) throws JMSException, JsonProcessingException {
         System.out.println("Inside getTaskList()");
+        for (Map.Entry<String, String> param : requestParams.entrySet()) {
+            System.out.println(param.getKey() + " " + param.getValue());
+        }
         List<Task> taskList = taskMessageProducer.sendGetTaskListMessage(requestParams);
         model.addAttribute("taskList", taskList);
+        for (Map.Entry<String, String> param : requestParams.entrySet()) {
+            model.addAttribute(param.getKey(), param.getValue());
+        }
         return "/task/task_list";
     }
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en", xmlns:th="http://thymeleaf.org">
+<html lang="en" , xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Task info</title>
+    <!--<link href="/static/task/task_info.css" rel="stylesheet">-->
     <link href="/task/task_info.css" rel="stylesheet">
 </head>
 <body>
@@ -11,69 +12,61 @@
     <div class="navigation">
         <div class="navigation_item_block">
             <form action="/tasks/list" method="get">
-                <input type="submit" value="Список задач" class="nav_item_button">
+                <input type="submit" value="СПИСОК ЗАДАЧ" class="nav_item_button">
             </form>
         </div>
         <div class="navigation_item_block">
             <form action="/users/list" method="get">
-                <input type="submit" value="Список пользователей" class="nav_item_button">
+                <input type="submit" value="СПИСОК ПОЛЬЗОВАТЕЛЕЙ" class="nav_item_button">
             </form>
         </div>
     </div>
 </nav>
 
-<div class="task_info">
-    <div class="id-title">
-        <div class="id">
-            <div class="label">ID:</div>
-            <div class="value" th:text="${task.getId()}">ID</div>
-        </div>
-        <div class="title">
-            <div class="label">Заголовок:</div>
-            <div class="value" th:text="${task.getTitle()}">title</div>
+<div class="main_block">
+    <div class="task_info_div_title">ИНФОРМАЦИЯ О ЗАДАЧЕ</div>
+    <div class="id_div">
+        <div class="id_label_div">ID:</div>
+        <div class="id_value_div" th:text="${task.getId()}">ID</div>
+    </div>
+    <div class="title_div">
+        <div class="title_label_div">Название:</div>
+        <div class="title_value_div" th:text="${task.getTitle()}">title</div>
+    </div>
+    <div class="author_div">
+        <div class="author_label_div">Автор:</div>
+        <div class="author_value_div">
+            <a th:href="@{/users/user_{id}(id=${task.getAuthor().getId()})}"
+               th:text="${task.getAuthor().getName() + ' ' + task.getAuthor().getSurname()}"/>
         </div>
     </div>
-    <div class="author-priority">
-        <div class="author">
-            <div class="label">Автор:</div>
-            <div class="value" th:text="${task.getAuthor().getEmail()}">author</div>
-        </div>
-        <div class="priority">
-            <div class="label">Приоритет:</div>
-            <div class="value" th:text="${task.getPriority()}">priority</div>
+    <div class="performer_div">
+        <div class="performer_label_div">Исполнитель:</div>
+        <div class="performer_value_div">
+            <a th:href="@{/users/user_{id}(id=${task.getPerformer().getId()})}"
+               th:text="${task.getPerformer().getName() + ' ' + task.getPerformer().getSurname()}"/>
         </div>
     </div>
-    <div class="performer-status">
-        <div class="performer">
-            <div class="label">Исполнитель:</div>
-            <div class="value" th:text="${task.getPerformer().getEmail()}">performer</div>
-        </div>
-        <div class="status">
-            <div class="label">Статус:</div>
-            <div class="value" th:text="${task.getStatus()}">status</div>
-        </div>
+    <div class="priority_div">
+        <div class="priority_label_div">Приоритет:</div>
+        <div class="priority_value_div" th:text="${task.getPriority().getRuString()}">priority</div>
     </div>
-    <div class="timestamp-deadline">
-        <div class="timestamp">
-            <div class="label">Дата создания:</div>
-            <div class="value" th:text="${task.getCreatedAt()}">created at</div>
-        </div>
-        <div class="deadline">
-            <div class="label">Дедлайн:</div>
-            <div class="value" th:text="${task.getDeadline()}">deadline</div>
-        </div>
+    <div class="status_div">
+        <div class="status_label_div">Статус:</div>
+        <div class="status_value_div" th:text="${task.getStatus().getRuString()}">status</div>
     </div>
-    <div class="description">
-        <div class="label">Описание:</div>
-        <div class="value" th:text="${task.getDescription()}">description</div>
+    <div class="timestamp_div">
+        <div class="timestamp_label_div">Дата создания:</div>
+        <div class="timestamp_value_div" th:text="${task.getCreatedAt()}">created at</div>
     </div>
-    <div class="comments_button">
-        <form action="" method="get">
-            <input type="submit" value="Посмотреть комментарии к задаче" class="show_comments_button">
-        </form>
+    <div class="deadline_div">
+        <div class="deadline_label_div">Дедлайн:</div>
+        <div class="deadline_value_div" th:text="${task.getDeadline()}">deadline</div>
+    </div>
+    <div class="description_div">
+        <div class="description_label_div">Описание:</div>
+        <div class="description_value_div" th:text="${task.getDescription()}">description</div>
     </div>
 </div>
-
-
 </body>
 </html>

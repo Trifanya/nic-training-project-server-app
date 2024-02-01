@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task list</title>
+    <!--<link href="/static/task/task_list.css" rel="stylesheet">-->
     <link href="/task/task_list.css" rel="stylesheet">
 </head>
 <body>
@@ -11,39 +12,23 @@
     <div class="navigation">
         <div class="navigation_item_block">
             <form action="/tasks/list" method="get">
-                <input type="submit" value="Список задач" class="nav_item_button">
+                <input type="submit" value="СПИСОК ЗАДАЧ" class="nav_item_button">
             </form>
         </div>
         <div class="navigation_item_block">
             <form action="/users/list" method="get">
-                <input type="submit" value="Список пользователей" class="nav_item_button">
+                <input type="submit" value="СПИСОК ПОЛЬЗОВАТЕЛЕЙ" class="nav_item_button">
             </form>
         </div>
     </div>
 </nav>
-
 <div class="main_block">
     <div class="content_block">
         <div class="search_block">
-            <form th:method="POST" th:action="@{/tasks/list}">
-                <input class="task_name_input" type="text" placeholder="Введите название задачи..."/>
+            <form th:method="GET" th:action="@{/tasks/list}">
+                <input class="task_name_input" type="text" name="searchStr" th:value="${searchStr}" placeholder="Введите название задачи..."/>
                 <input class="search_button" type="submit" value="Поиск"/>
             </form>
-        </div>
-        <div class="sort_block">
-            <div class="sort_by">
-                <select>
-                    <option>Сортировка по умолчанию</option>
-                    <option>Сортировка по дедлайну</option>
-                    <option>Сортировка по дате создания</option>
-                </select>
-            </div>
-            <div class="sort_dir">
-                <select>
-                    <option>Сортировать по возрастанию</option>
-                    <option>Сортировать по убыванию</option>
-                </select>
-            </div>
         </div>
         <div class="task_list_block">
             <table class="task_table">
@@ -64,51 +49,69 @@
             </table>
         </div>
     </div>
-    <div class="filters_block">
-        <div class="title">Фильтры</div>
-        <div class="deadline">
-            <div class="title">Дедлайн</div>
-            <div class="range_start">
-                <label for="deadline_start">От:</label>
-                <input type="date" id="deadline_start"/>
-            </div>
-            <div class="range_end">
-                <label for="deadline_end">До:</label>
-                <input type="date" id="deadline_end"/>
-            </div>
-        </div>
-        <div class="timestamp">
-            <div class="title">Дата создания</div>
-            <div class="range_start">
-                <label for="timestamp_start">От:</label>
-                <input type="date" id="timestamp_start"/>
-            </div>
-            <div class="range_end">
-                <label for="timestamp_end">До:</label>
-                <input type="date" id="timestamp_end"/>
-            </div>
-        </div>
-        <div class="priority">
-            <div class="title">Приоритет</div>
-            <div class="priority_value">
-                <select>
-                    <option>Низкий</option>
-                    <option>Средний</option>
-                    <option>Высокий</option>
+    <form th:method="GET" th:action="@{/tasks/list}">
+        <div class="filters_block">
+            <div class="title">Фильтры</div>
+            <div class="sort_by">
+                <select name="sortBy">
+                    <option value="id" th:selected="${sortBy} == 'id'">Сортировка по умолчанию</option>
+                    <option value="deadline" th:selected="${sortBy} == 'deadline'">Сортировка по дедлайну</option>
+                    <option value="created_at" th:selected="${sortBy} == 'created_at'">Сортировка по дате создания</option>
                 </select>
             </div>
-        </div>
-        <div class="status">
-            <div class="title">Статус</div>
-            <div class="status_value">
-                <select>
-                    <option>Не начата</option>
-                    <option>В процессе</option>
-                    <option>Выполнена</option>
+            <div class="sort_dir">
+                <select name="sortDir">
+                    <option value="ASC" th:selected="${sortDir} == 'ASC'">Сортировать по возрастанию</option>
+                    <option value="DESC" th:selected="${sortDir} == 'DESC'">Сортировать по убыванию</option>
                 </select>
             </div>
+            <div class="deadline">
+                <div class="deadline_title">Дедлайн</div>
+                <div class="deadline_range_start">
+                    <label>От:</label>
+                    <input type="datetime-local" id="deadline_start" name="deadlineStart" th:value="${deadlineStart}"/>
+                </div>
+                <div class="deadline_range_end">
+                    <label>До:</label>
+                    <input type="datetime-local" id="deadline_end" name="deadlineEnd" th:value="${deadlineEnd}"/>
+                </div>
+            </div>
+            <div class="timestamp">
+                <div class="timestamp_title">Дата создания</div>
+                <div class="timestamp_range_start">
+                    <label>От:</label>
+                    <input type="datetime-local" id="timestamp_start" name="created_atStart" th:value="${created_atStart}"/>
+                </div>
+                <div class="timestamp_range_end">
+                    <label>До:</label>
+                    <input type="datetime-local" id="timestamp_end" name="created_atEnd" th:value="${created_atEnd}"/>
+                </div>
+            </div>
+            <div class="priority">
+                <div class="priority_title">Приоритет</div>
+                <div class="priority_value">
+                    <select name="priority" >
+                        <option value="">Любой</option>
+                        <option value="LOW" th:selected="${priority} == 'LOW'">Низкий</option>
+                        <option value="MEDIUM" th:selected="${priority} == 'MEDIUM'">Средний</option>
+                        <option value="HIGH" th:selected="${priority} == 'HIGH'" selected>Высокий</option>
+                    </select>
+                </div>
+            </div>
+            <div class="status">
+                <div class="status_title">Статус</div>
+                <div class="status_value">
+                    <select name="status_select">
+                        <option value="">Любой</option>
+                        <option value="NOT_STARTED" th:selected="${status} == 'NOT_STARTED'">Не начата</option>
+                        <option value="IN_PROGRESS" th:selected="${status} == 'IN_PROGRESS'">В процессе</option>
+                        <option value="COMPLETED" th:selected="${status} == 'COMPLETED'">Выполнена</option>
+                    </select>
+                </div>
+            </div>
+            <input class="submit" type="submit" value="Применить">
         </div>
-    </div>
+    </form>
 </div>
 
 

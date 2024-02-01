@@ -58,21 +58,21 @@ div {
 .main_block {
     flex-direction: column;
     height: 86vh;
-    width: 80vw;
+    width: 50vw;
+    justify-content: flex-start;
     border: none;
     background-color: lightgray;
-    margin-top: 3vh;
     box-shadow: 0 0 10px 10px darkgray;
-    justify-content: flex-start;
+    margin-top: 3vh;
 }
 
-.task_info_div_title {
+.user_info_div_title {
     height: 6vh;
     width: 24vw;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
 }
 
 /* Блок с ID */
@@ -80,12 +80,12 @@ div {
     flex-direction: row;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
 }
 
 .id_label_div {
-    height: 5vh;
-    width: 14vw;
+    height: 6vh;
+    width: 10vw;
     border: none;
     border-right: 5px solid darkgray;
     border-top-right-radius: 0;
@@ -93,166 +93,98 @@ div {
 }
 
 .id_value_div {
-    height: 5vh;
-    width: 34vw;
+    height: 6vh;
+    width: 30vw;
     border: none;
 }
 
-.title_div {
+.name_div {
     flex-direction: row;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
 }
-.title_label_div {
-    height: 5vh;
-    width: 14vw;
+
+.name_label_div {
+    height: 6vh;
+    width: 10vw;
     border: none;
     border-right: 5px solid darkgray;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.title_value_div {
-    height: 5vh;
-    width: 34vw;
+
+.name_value_div {
+    height: 6vh;
+    width: 30vw;
     border: none;
 }
 
-.author_div {
+/* Блок с фамилией */
+.surname_div {
     flex-direction: row;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
 }
-.author_label_div {
-    height: 5vh;
-    width: 14vw;
+
+.surname_label_div {
+    height: 6vh;
+    width: 10vw;
     border: none;
     border-right: 5px solid darkgray;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.author_value_div {
-    height: 5vh;
-    width: 34vw;
+
+.surname_value_div {
+    height: 6vh;
+    width: 30vw;
     border: none;
 }
 
-.performer_div {
+/* Блок с должностью */
+.position_div {
     flex-direction: row;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
 }
-.performer_label_div {
-    height: 5vh;
-    width: 14vw;
+
+.position_label_div {
+    height: 6vh;
+    width: 10vw;
     border: none;
     border-right: 5px solid darkgray;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.performer_value_div {
-    height: 5vh;
-    width: 34vw;
+
+.position_value_div {
+    height: 6vh;
+    width: 30vw;
     border: none;
 }
 
-.priority_div {
+/* Блок с email */
+.email_div {
     flex-direction: row;
     border: none;
     box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
+    margin-bottom: 3vh;
 }
-.priority_label_div {
-    height: 5vh;
-    width: 14vw;
+
+.email_label_div {
+    height: 6vh;
+    width: 10vw;
     border: none;
     border-right: 5px solid darkgray;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-.priority_value_div {
-    height: 5vh;
-    width: 34vw;
-    border: none;
-}
 
-.status_div {
-    flex-direction: row;
-    border: none;
-    box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
-}
-.status_label_div {
-    height: 5vh;
-    width: 14vw;
-    border: none;
-    border-right: 5px solid darkgray;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.status_value_div {
-    height: 5vh;
-    width: 34vw;
-    border: none;
-}
-
-.timestamp_div {
-    flex-direction: row;
-    border: none;
-    box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
-}
-.timestamp_label_div {
-    height: 5vh;
-    width: 14vw;
-    border: none;
-    border-right: 5px solid darkgray;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.timestamp_value_div {
-    height: 5vh;
-    width: 34vw;
-    border: none;
-}
-
-.deadline_div {
-    flex-direction: row;
-    border: none;
-    box-shadow: 0 0 5px 5px darkgray;
-    margin-bottom: 1vh;
-}
-.deadline_label_div {
-    height: 5vh;
-    width: 14vw;
-    border: none;
-    border-right: 5px solid darkgray;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.deadline_value_div {
-    height: 5vh;
-    width: 34vw;
-    border: none;
-}
-
-.description_div {
-    flex-direction: row;
-    border: none;
-    box-shadow: 0 0 5px 5px darkgray;
-}
-.description_label_div {
-    height: 20vh;
-    width: 14vw;
-    border: none;
-    border-right: 5px solid darkgray;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-.description_value_div {
-    height: 20vh;
-    width: 34vw;
+.email_value_div {
+    height: 6vh;
+    width: 30vw;
     border: none;
 }

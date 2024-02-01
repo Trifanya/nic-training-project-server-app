@@ -3,8 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>User info</title>
+    <!--<link href="/static/user/user_info.css" rel="stylesheet">-->
+    <link href="/user/user_info.css" rel="stylesheet">
 </head>
 <body>
+
+<nav>
+    <div class="navigation">
+        <div class="navigation_item_block">
+            <form action="/tasks/list" method="get">
+                <input type="submit" value="СПИСОК ЗАДАЧ" class="nav_item_button">
+            </form>
+        </div>
+        <div class="navigation_item_block">
+            <form action="/users/list" method="get">
+                <input type="submit" value="СПИСОК ПОЛЬЗОВАТЕЛЕЙ" class="nav_item_button">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="main_block">
+        <div class="user_info_div_title">ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ</div>
+        <div class="id_div">
+            <div class="id_label_div">ID:</div>
+            <div class="id_value_div" th:text="${user.getId()}">id</div>
+        </div>
+        <div class="name_div">
+            <div class="name_label_div">Имя:</div>
+            <div class="name_value_div" th:text="${user.getName()}">name</div>
+        </div>
+        <div class="surname_div">
+            <div class="surname_label_div">Фамилия:</div>
+            <div class="surname_value_div" th:text="${user.getSurname()}">surname</div>
+        </div>
+        <div class="position_div">
+            <div class="position_label_div">Должность:</div>
+            <div class="position_value_div" th:text="${user.getPosition()}">position</div>
+        </div>
+        <div class="email_div">
+            <div class="email_label_div">Email:</div>
+            <div class="email_value_div" th:text="${user.getEmail()}">email</div>
+        </div>
+</div>
+
 
 </body>
 </html>
