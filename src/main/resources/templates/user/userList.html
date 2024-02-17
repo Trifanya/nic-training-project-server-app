@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+    <!--<link href="/static/user/user_list.css" rel="stylesheet">-->
+    <link href="/user/user_list.css" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <div class="navigation">
+        <div class="navigation_item_block">
+            <form action="/tasks/list" method="get">
+                <input type="submit" value="СПИСОК ЗАДАЧ" class="nav_item_button">
+            </form>
+        </div>
+        <div class="navigation_item_block">
+            <form action="/users/list" method="get">
+                <input type="submit" value="СПИСОК ПОЛЬЗОВАТЕЛЕЙ" class="nav_item_button">
+            </form>
+        </div>
+    </div>
+</nav>
+<form>
+    <div class="main_block">
+        <div class="search_block">
+                <input class="user_email_input" type="text" name="searchStr" th:value="${searchStr}"
+                       placeholder="Введите email пользователя..."/>
+                <input class="search_button" type="submit" value="Поиск"/>
+        </div>
+        <div class="task_list_block">
+            <table class="task_table">
+                <thead>
+                <tr>
+                    <th class="top_1">ID</th>
+                    <th class="top_2">Имя</th>
+                    <th class="top_3">Фамилия</th>
+                    <th class="top_4">Должность</th>
+                    <th class="top_5">Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${userList}">
+                    <td><a th:href="@{/users/user_{id}(id=${user.getId()})}" th:text="${user.getId()}"/></td>
+                    <td th:text="${user.getName()}">name</td>
+                    <td th:text="${user.getSurname()}">surname</td>
+                    <td th:text="${user.getPosition()}">position</td>
+                    <td th:text="${user.getEmail()}">email</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+</body>
+</html>

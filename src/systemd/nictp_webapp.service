@@ -1,0 +1,17 @@
+[Unit]
+Description=NIC training project, Spring Web App
+After=syslog.target network.target
+
+[Service]
+WorkingDirectory=/home/trifanya/Java/NIC/training-project/webapp/deb
+SuccessExitStatus=143
+ExecStart=/home/trifanya/Java/NIC/training-project/webapp/deb/bin/nictp_webapp.sh
+ExecStop=/bin/kill -15 $MAINPID
+
+Type=forking
+
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

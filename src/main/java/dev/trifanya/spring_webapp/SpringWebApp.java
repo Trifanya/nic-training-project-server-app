@@ -1,9 +1,6 @@
 package dev.trifanya.spring_webapp;
 
-import dev.trifanya.spring_webapp.model.task.Task;
-import liquibase.repackaged.org.apache.commons.collections4.map.SingletonMap;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -16,8 +13,6 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
 import javax.jms.ConnectionFactory;
-import java.util.List;
-
 
 @EnableJms
 @SpringBootApplication

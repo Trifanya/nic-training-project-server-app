@@ -22,41 +22,43 @@
         </div>
     </div>
 </nav>
-<div class="main_block">
-    <div class="content_block">
-        <div class="search_block">
-            <form th:method="GET" th:action="@{/tasks/list}">
-                <input class="task_name_input" type="text" name="searchStr" th:value="${searchStr}" placeholder="Введите название задачи..."/>
+<form id="allFilters">
+    <div class="main_block">
+        <div class="content_block">
+            <div class="search_block">
+                <!--<form th:method="GET" th:action="@{/tasks/list}">-->
+                <input class="task_name_input" type="text" name="searchStr" th:value="${searchStr}"
+                       placeholder="Введите название задачи..."/>
                 <input class="search_button" type="submit" value="Поиск"/>
-            </form>
+                <!--</form>-->
+            </div>
+            <div class="task_list_block">
+                <table class="task_table">
+                    <thead>
+                    <tr>
+                        <th class="top_left">ID</th>
+                        <th class="top_center">Название</th>
+                        <th class="top_right">Приоритет</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task : ${taskList}">
+                        <td th:text="${task.getId()}">taskId</td>
+                        <td><a th:href="@{/tasks/task_{id}(id=${task.getId()})}" th:text="${task.getTitle()}"/></td>
+                        <td th:text="${task.getPriority()}">taskPriority</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="task_list_block">
-            <table class="task_table">
-                <thead>
-                <tr>
-                    <th class="top_left">ID</th>
-                    <th class="top_center">Название</th>
-                    <th class="top_right">Приоритет</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="task : ${taskList}">
-                    <td th:text="${task.getId()}">taskId</td>
-                    <td><a th:href="@{/tasks/task_{id}(id=${task.getId()})}" th:text="${task.getTitle()}"/></td>
-                    <td th:text="${task.getPriority()}">taskPriority</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <form th:method="GET" th:action="@{/tasks/list}">
         <div class="filters_block">
             <div class="title">Фильтры</div>
             <div class="sort_by">
                 <select name="sortBy">
                     <option value="id" th:selected="${sortBy} == 'id'">Сортировка по умолчанию</option>
                     <option value="deadline" th:selected="${sortBy} == 'deadline'">Сортировка по дедлайну</option>
-                    <option value="created_at" th:selected="${sortBy} == 'created_at'">Сортировка по дате создания</option>
+                    <option value="created_at" th:selected="${sortBy} == 'created_at'">Сортировка по дате создания
+                    </option>
                 </select>
             </div>
             <div class="sort_dir">
@@ -69,7 +71,8 @@
                 <div class="deadline_title">Дедлайн</div>
                 <div class="deadline_range_start">
                     <label>От:</label>
-                    <input type="datetime-local" id="deadline_start" name="deadlineStart" th:value="${deadlineStart}"/>
+                    <input type="datetime-local" id="deadline_start" name="deadlineStart"
+                           th:value="${deadlineStart}"/>
                 </div>
                 <div class="deadline_range_end">
                     <label>До:</label>
@@ -80,17 +83,19 @@
                 <div class="timestamp_title">Дата создания</div>
                 <div class="timestamp_range_start">
                     <label>От:</label>
-                    <input type="datetime-local" id="timestamp_start" name="created_atStart" th:value="${created_atStart}"/>
+                    <input type="datetime-local" id="timestamp_start" name="created_atStart"
+                           th:value="${created_atStart}"/>
                 </div>
                 <div class="timestamp_range_end">
                     <label>До:</label>
-                    <input type="datetime-local" id="timestamp_end" name="created_atEnd" th:value="${created_atEnd}"/>
+                    <input type="datetime-local" id="timestamp_end" name="created_atEnd"
+                           th:value="${created_atEnd}"/>
                 </div>
             </div>
             <div class="priority">
                 <div class="priority_title">Приоритет</div>
                 <div class="priority_value">
-                    <select name="priority" >
+                    <select name="priority">
                         <option value="">Любой</option>
                         <option value="LOW" th:selected="${priority} == 'LOW'">Низкий</option>
                         <option value="MEDIUM" th:selected="${priority} == 'MEDIUM'">Средний</option>
@@ -111,9 +116,8 @@
             </div>
             <input class="submit" type="submit" value="Применить">
         </div>
-    </form>
-</div>
-
+    </div>
+</form>
 
 </body>
 </html>

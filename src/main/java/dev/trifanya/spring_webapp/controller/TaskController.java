@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import dev.trifanya.spring_webapp.model.task.Task;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,20 +25,16 @@ public class TaskController {
     public String getTask(@PathVariable("taskId") int taskId, Model model) throws JMSException, JsonProcessingException {
         Task task = taskMessageProducer.sendGetTaskMessage(taskId);
         model.addAttribute("task", task);
-        return "/task/task_info";
+        return "/task/taskInfo";
     }
 
     @GetMapping("/list")
     public String getTaskList(@RequestParam Map<String, String> requestParams, Model model) throws JMSException, JsonProcessingException {
-        System.out.println("Inside getTaskList()");
-        for (Map.Entry<String, String> param : requestParams.entrySet()) {
-            System.out.println(param.getKey() + " " + param.getValue());
-        }
         List<Task> taskList = taskMessageProducer.sendGetTaskListMessage(requestParams);
         model.addAttribute("taskList", taskList);
         for (Map.Entry<String, String> param : requestParams.entrySet()) {
             model.addAttribute(param.getKey(), param.getValue());
         }
-        return "/task/task_list";
+        return "/task/taskList";
     }
 }

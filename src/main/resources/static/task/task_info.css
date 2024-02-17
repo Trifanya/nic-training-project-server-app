@@ -16,8 +16,8 @@ div {
     justify-content: center;
     background-color: white;
     color: black;
-    border: 3px solid black;
     border-radius: 10px;
+    word-break: break-all;
 }
 
 .navigation {
@@ -36,6 +36,7 @@ div {
     height: 6vh;
     width: 48vw;
     border: none;
+    background-color: inherit;
     align-items: center;
 }
 
