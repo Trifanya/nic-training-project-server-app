@@ -3,13 +3,11 @@
 LIBSPATH=/usr/lib:/usr/lib/x86_64-linux-gnu
 export LD_LIBRARY_PATH=$LIBSPATH
 
-APPDIR=/home/trifanya/Java/NIC/training-project/webapp/deb
+APPDIR=/home/trifanya/Java/NICTP/webapp/deb
 JAVA=java
-#MAINCLASS=dev.trifanya.spring_webapp.SpringWebApp
 MAINCLASS=org.springframework.boot.loader.JarLauncher
 
 cd $APPDIR
-q
 exec $JAVA \
   -server \
   -Djava.library.path=$LIBSPATH \
@@ -21,3 +19,6 @@ exec $JAVA \
   -Djava.net.preferIPv4Stack=true \
   -cp "$APPDIR/lib/*" \
   $MAINCLASS &
+
+#  -Dlogging.level.org.springframework.web=TRACE \
+#  -Dlogging.level.dev.trifanya.spring_webapp=TRACE \

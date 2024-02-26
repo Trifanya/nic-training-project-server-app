@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dev.trifanya.spring_webapp</groupId>
-    <artifactId>SpringWebApp</artifactId>
+    <artifactId>NICTP_SpringWebApp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <description>Spring Boot Web Application</description>
 

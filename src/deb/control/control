@@ -6,6 +6,6 @@ Architecture: all
 Depends: jdk (>= 1.8)
 Build-Depends: debhelper, dh-systemd(>=1.5)
 Maintainer: Trifanya (trifanya.dev@gmail.com)
-Description: Debian package with spring web application
+Description: Debian package with Spring Boot Web Application
 Distribution: development
 Depends: default-jre | java8-runtime

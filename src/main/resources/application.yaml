@@ -2,11 +2,13 @@ spring:
   activemq:
     user: admin
     password: admin
-    crud-to-web-queue: "Response Queue"
-    web-to-crud-queue: "Request Queue"
-    client-id: "Spring Web App"
+    web-to-crud-queue: "Web->Server"
+    client-id: "Spring Boot Web App"
     broker-url: tcp://localhost:61616
     packages:
       trusted: org.springframework.remoting.support,java.lang,dev.trifanya.spring_webapp
-
+logging:
+  level:
+    org.springframework.web: INFO
+    dev.trifanya.spring_webapp: TRACE
 

@@ -3,9 +3,9 @@ Description=NIC training project, Spring Web App
 After=syslog.target network.target
 
 [Service]
-WorkingDirectory=/home/trifanya/Java/NIC/training-project/webapp/deb
+WorkingDirectory=/home/trifanya/Java/NICTP/webapp/deb
 SuccessExitStatus=143
-ExecStart=/home/trifanya/Java/NIC/training-project/webapp/deb/bin/nictp_webapp.sh
+ExecStart=/home/trifanya/Java/NICTP/webapp/deb/bin/nictp_webapp.sh
 ExecStop=/bin/kill -15 $MAINPID
 
 Type=forking
