@@ -1,6 +1,6 @@
 package dev.trifanya.spring_webapp;
 
-import org.modelmapper.ModelMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +19,6 @@ import javax.jms.ConnectionFactory;
 @EnableJms
 @SpringBootApplication
 public class SpringWebApp {
-	public static final Logger logger = LoggerFactory.getLogger(SpringWebApp.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringWebApp.class, args);
 	}
@@ -42,8 +40,15 @@ public class SpringWebApp {
 		return converter;
 	}
 
-	@Bean
+/*	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
+	}*/
+
+	@Bean
+	public ObjectMapper objectMapper() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.findAndRegisterModules();
+		return objectMapper;
 	}
 }

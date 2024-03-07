@@ -3,7 +3,7 @@
 LIBSPATH=/usr/lib:/usr/lib/x86_64-linux-gnu
 export LD_LIBRARY_PATH=$LIBSPATH
 
-APPDIR=/home/trifanya/Java/NICTP/webapp/deb
+APPDIR=/home/trifanya/Java/NICTP/webapp
 JAVA=java
 MAINCLASS=org.springframework.boot.loader.JarLauncher
 
