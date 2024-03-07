@@ -2,7 +2,6 @@ package dev.trifanya.spring_webapp.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import dev.trifanya.spring_webapp.service.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,7 +10,7 @@ import javax.jms.JMSException;
 
 @ControllerAdvice
 public class MainExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+    private static final Logger logger = LoggerFactory.getLogger(MainExceptionHandler.class);
 
     @ExceptionHandler(JMSException.class)
     public void handleException(JMSException exception) {
